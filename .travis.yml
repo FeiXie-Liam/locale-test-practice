@@ -1,3 +1,9 @@
+env:
+  global:
+    - CODECOV_TOKEN="56c70bee-2809-43bc-b6a0-50f350baa843"
 language: java
 
 script: ./gradlew clean test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
