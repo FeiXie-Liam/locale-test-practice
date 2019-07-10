@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'jacoco'
+    id 'application'
+}
+
+repositories {
+    jcenter()
+}
+
+test {
+    finalizedBy jacocoTestCoverageVerification
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                counter = "BRANCH"
+                value = "COVEREDRATIO"
+                minimum = 0.8
+            }
+            limit {
+                counter = "CLASS"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "METHOD"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "LINE"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "INSTRUCTION"
+                value = "COVEREDRATIO"
+                minimum = 0.9
+            }
+            limit {
+                counter = "COMPLEXITY"
+                value = "COVEREDRATIO"
+                minimum = 0.7
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+}
